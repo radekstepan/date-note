@@ -7,7 +7,7 @@
     "date-note": "./index.js"
   },
   "scripts": {
-    "start": "./index.js example.md"
+    "start": "./index.js example.txt"
   },
   "repository": "https://github.com/radekstepan/date-note",
   "license": "UNLICENSED",
