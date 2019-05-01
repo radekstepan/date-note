@@ -1,22 +1,27 @@
 {
   "name": "date-note",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Rename a file so it's dated and has a title",
   "main": "index.js",
   "bin": {
     "date-note": "./index.js"
   },
   "scripts": {
-    "start": "./index.js example.txt"
+    "test": "tap test.js"
   },
   "repository": "https://github.com/radekstepan/date-note",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "chrono-node": "1.3.11",
     "cli-truncate": "1.1.0",
     "glob": "7.1.3",
     "ora": "3.4.0",
     "serialize-error": "4.1.0",
     "slugify": "1.3.4"
+  },
+  "devDependencies": {
+    "mockdate": "2.0.2",
+    "tap": "13.1.1"
   }
 }
