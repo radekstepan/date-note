@@ -5,6 +5,8 @@ const slugify = require('slugify');
 const chrono = require('chrono-node');
 
 const MAX_LENGTH = 40;
+const DATE_TITLE_SEP = ' - ';
+const REPLACEMENT = '_';
 
 module.exports = body => {
   const a = body.search(/\S/m);
@@ -14,11 +16,11 @@ module.exports = body => {
 
   // Check the first line.
   const first = body.substr(0, body.search(EOL));
-  let [date, ...title] = first.split('-');
+  let [date, ...title] = first.split(DATE_TITLE_SEP);
   date = chrono.parseDate(date);
 
   if (date) {
-    title = title.join('-').trim();
+    title = title.join(DATE_TITLE_SEP).trim();
   } else {
     // Try period.
     let b = body.search(/\./m);
@@ -33,7 +35,7 @@ module.exports = body => {
 
   title = truncate(title, MAX_LENGTH, {mark: ''}).replace('…', '');
   const slug = slugify(title, {
-    replacement: '_',
+    replacement: REPLACEMENT,
     lower: true
   });
 
