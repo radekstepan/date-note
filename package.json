@@ -1,6 +1,6 @@
 {
   "name": "date-note",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Save a note so it's dated and has a title",
   "main": "index.js",
   "bin": {

@@ -7,6 +7,7 @@ const chrono = require('chrono-node');
 const MAX_LENGTH = 40;
 const DATE_TITLE_SEP = ' - ';
 const REPLACEMENT = '_';
+const NEWLINE = [EOL, EOL].join('');
 
 module.exports = body => {
   const a = body.search(/\S/m);
@@ -26,9 +27,15 @@ module.exports = body => {
     let b = body.search(/\./m);
     // Or two newlines.
     if (b === -1) {
-      b = body.search([EOL, EOL].join(''));
+      b = body.search(NEWLINE);
     }
     title = b === -1 ? body.substr(a) : body.substr(a, b - a);
+    // Make sure there are no newlines in between.
+    let c = title.search(NEWLINE);
+    if (c !== -1) {
+      title = title.substr(0, c);
+    }
+
     // Now.
     date = new Date();
   }
