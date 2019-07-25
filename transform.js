@@ -3,6 +3,7 @@ const {EOL} = require('os');
 const truncate = require('cli-truncate');
 const slugify = require('slugify');
 const chrono = require('chrono-node');
+const pad = require('zero-fill');
 
 const MAX_LENGTH = 40;
 const DATE_TITLE_SEP = ' - ';
@@ -46,7 +47,10 @@ module.exports = body => {
     lower: true
   });
 
-  date = date.toISOString().substring(0, 10);
-
-  return [date, slug].join('-');
+  return [
+    date.getFullYear(),
+    pad(2, date.getMonth() + 1),
+    pad(2, date.getDate()),
+    slug
+  ].join('-');
 };
